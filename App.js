@@ -1,7 +1,7 @@
 //App.js
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useContext, useEffect } from 'react';
-import { ScrollView,View, Text, Image, TouchableOpacity, StyleSheet,Dimensions } from 'react-native';
+import { Platform, ScrollView,View, Text, Image, TouchableOpacity, StyleSheet,Dimensions } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { UserContext, UserProvider } from './UserContext';
