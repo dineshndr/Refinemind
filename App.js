@@ -5,18 +5,17 @@ import { Platform, ScrollView,View, Text, Image, TouchableOpacity, StyleSheet,Di
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { UserContext, UserProvider } from './UserContext';
-import Activity1 from './Activity1';
-import Activity2 from './Activity2';
-import FamilyDetailsActivity from './FamilyDetailsActivity';
-import AboutMeDetailsActivity from './AboutMeDetailsActivity';
-import Activity4 from './Activity4';
-import Activity5 from './Activity5';
-import Activity6 from './Activity6';
-import Activity3 from './Activity3'; 
+import AboutMe from './AboutMe';
+import Activity2 from './Family';
+import FamilyDetails from './FamilyDetails';
+import AboutMeDetails from './AboutMeDetails';
+import Medications from './Medications';
+import Schedule from './Schedule';
+import Game from './Game';
+import PreciousMoments from './PreciousMoments'; 
 import FavouritesForm from './FavouritesForm';
 import FavouritesDisplay from './FavouritesDisplay';
-
-
+import Family from './Family';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -24,15 +23,15 @@ export default function App() {
     <UserProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Activity1" component={Activity1} />
-          <Stack.Screen name="AboutMeDetailsActivity" component={AboutMeDetailsActivity} />
-          <Stack.Screen name="Activity2" component={Activity2} />
-          <Stack.Screen name="FamilyDetailsActivity" component={FamilyDetailsActivity} />
-          <Stack.Screen name="Activity4" component={Activity4} />
-          <Stack.Screen name="Activity5" component={Activity5} />
-          <Stack.Screen name="Activity6" component={Activity6} />
-          <Stack.Screen name="Activity3" component={Activity3} /> 
+          <Stack.Screen name="RefineMind" component={HomeScreen} />
+          <Stack.Screen name="AboutMe" component={AboutMe} />
+          <Stack.Screen name="AboutMeDetails" component={AboutMeDetails} />
+          <Stack.Screen name="Family" component={Family} />
+          <Stack.Screen name="FamilyDetails" component={FamilyDetails}/>
+          <Stack.Screen name="Medications" component={Medications} />
+          <Stack.Screen name="Schedule" component={Schedule} />
+          <Stack.Screen name="Game" component={Game} />
+          <Stack.Screen name="PreciousMoments" component={PreciousMoments} /> 
           <Stack.Screen name="FavouritesForm" component={FavouritesForm}/>
           <Stack.Screen name="FavouritesDisplay" component={FavouritesDisplay}/>
         </Stack.Navigator>
@@ -48,9 +47,9 @@ const HomeScreen = () => {
     // Check if details are filled directly from AsyncStorage
     const isUserDetailsFilled = await checkUserDetailsFilled();
     if (isUserDetailsFilled) {
-      navigation.navigate('AboutMeDetailsActivity');
+      navigation.navigate('AboutMeDetails');
     } else {
-      navigation.navigate('Activity1');
+      navigation.navigate('AboutMe');
     }
   };
 
@@ -71,9 +70,9 @@ const HomeScreen = () => {
     // Check if details are filled directly from AsyncStorage
     const isFamilyDetailsFilled = await checkFamilyDetailsFilled();
     if (isFamilyDetailsFilled) {
-      navigation.navigate('FamilyDetailsActivity');
+      navigation.navigate('FamilyDetails');
     } else {
-      navigation.navigate('Activity2');
+      navigation.navigate('Family');
     }
   };
 
@@ -88,19 +87,19 @@ const HomeScreen = () => {
     }
   };
   const handleActivity4_ButtonPress = () => {
-    navigation.navigate('Activity4');
+    navigation.navigate('Medications');
   };
 
   const handleActivity5_ButtonPress = () => {
-    navigation.navigate('Activity5');
+    navigation.navigate('Schedule');
   };
   const handleActivity6_ButtonPress = () => {
-    navigation.navigate('Activity6');
+    navigation.navigate('Game');
   };
 
   const handleActivity3_ButtonPress = async () => {
    
-    navigation.navigate('Activity3');
+    navigation.navigate('PreciousMoments');
   };
   return (
     <ScrollView contentContainerStyle={styles.container} style={Platform.OS === 'android' ? styles.androidScrollView : null}>
@@ -147,7 +146,6 @@ const HomeScreen = () => {
             />
           </TouchableOpacity>
         </View>
-        {/* Add more rows as needed */}
       </View>
     </ScrollView>
   );
